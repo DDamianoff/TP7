@@ -1,20 +1,18 @@
-// noinspection JSUnusedGlobalSymbols
-
 let arr:number[] = [5,3,1,23,654,8,43]
 let names:string[] = ["Hare","Kristina","Hare", "Kristina", "Kristina", "Kristina", "Hare", "Hare", ";)"];
 
 // Ejercicio 5
-// console.log("array ordenado: "+filterRange(arr,1,4));
-// console.log("array original "+arr);
+console.log("EJ 5: array ordenado: "+filterRange(arr,1,4));
+console.log("EJ 5: array original "+arr);
 //
 // Ejercicio 6
-// console.log("array ordenado de forma descendiente: "+shortInvertByBubble(arr));
+console.log("EJ 6: array ordenado de forma descendiente: "+shortInvertByBubble(arr));
 //
 // Ejercicio 7
-// console.log("array orden aleatorio: "+randomize(arr,20));
+console.log("EJ 7: array orden aleatorio: "+randomize(arr,20));
 //
 // Ejercicio 8
-// console.log("elementos sin repetir: "+selectUniqueItems(names));
+console.log("EJ 8: elementos sin repetir: "+selectUniqueItems(names));
 
 function shortByBubble (array:number[]) {
     let aux:number = 0;
@@ -89,59 +87,12 @@ function randomize (vec:number[], seed:number = 0) {
     return swapped
 }
 
-
-function countRepeatedValue (word: string[]) {
-    let counter: {[key: string]: number[]} = {};
-    let i:number = 0;
-
-    for (let e of word) {
-        if (e in counter) {
-            counter[e].push(i);
-        }
-        else {
-            counter[e] = [i];
-        }
-    i++
-    }
-    return counter
-}
-
-function selectUniqueItems(textList:string[]) {
-    return Object.keys(countRepeatedValue(textList));
-}
-
-/*
-Producto a medias de una mala interpretación de la consigna.
-(elimina todos los elementos repetidos)
-
-// expresará el objeto como array de arrays
-// y usará o descartará sus valores en función de
-// la cantidad de valores de los array hijos.
-function compactRepeatedValues (valueList: {[key: string]: number[]}) {
-    let repeatedValues:number[] = [];
-    // @ts-ignore
-    let valueListArray: number[][] = Object.values(valueList);
-
-    for (let array of valueListArray) {
-        if (array.length > 1) {
-            repeatedValues = repeatedValues.concat(array);
+function selectUniqueItems (wordList: string[]) {
+    let registro: string[] = [];
+    for (let word of wordList) {
+        if (registro.indexOf(word) === -1) {
+            registro.push(word);
         }
     }
-    return repeatedValues
+    return registro
 }
-
-function selectUniqueItems (wordList:string[]) {
-    let ListDict: {[key: string]: number[]} = countRepeatedValue(wordList);
-    let repeatedIndex: number[] = compactRepeatedValues(ListDict);
-    // una linea: let repeatedIndex: number[] = compactRepeatedValues(countRepeatedValue(wordList));
-
-    let poppedWordList:string[] = [...wordList];
-    for (let i = 0; i < repeatedIndex.length; i++) {
-        poppedWordList.splice(repeatedIndex[i],1);
-    }
-    return poppedWordList
-}
-
-*/
-
-// noinspection JSUnusedGlobalSymbols
