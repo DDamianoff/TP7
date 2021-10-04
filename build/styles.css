@@ -1,0 +1,16 @@
+body {
+  background-color: #5b5757;
+  max-width: 1000px;
+  min-width: 200px;
+  margin: auto;
+}
+body .general-container {
+  background: purple;
+  color: aliceblue;
+}
+body .general-container header {
+  text-align: center;
+  color: white;
+}
+
+/*# sourceMappingURL=styles.css.map */
