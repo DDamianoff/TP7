@@ -1,7 +1,7 @@
-let arr = [5, 3, 1, 23, 654, 8, 43];
+let arr = [5, 3, 8, 1, 20, 50, 4];
 let names = ["Hare", "Kristina", "Hare", "Kristina", "Kristina", "Kristina", "Hare", "Hare", ";)"];
 // Ejercicio 5
-console.log("EJ 5: array ordenado: " + filterRange(arr, 1, 4));
+console.log("EJ 5: elementos coincidentes según rango: " + filterRange(arr, 1, 4));
 console.log("EJ 5: array original " + arr);
 //
 // Ejercicio 6
@@ -12,20 +12,6 @@ console.log("EJ 7: array orden aleatorio: " + randomize(arr, 20));
 //
 // Ejercicio 8
 console.log("EJ 8: elementos sin repetir: " + selectUniqueItems(names));
-function shortByBubble(array) {
-    let aux = 0;
-    let N = array.length;
-    for (let i = 0; i < N - 1; i++) {
-        for (let j = i + 1; j < N; j++) {
-            if (array[i] > array[j]) {
-                aux = array[i];
-                array[i] = array[j];
-                array[j] = aux;
-            }
-        }
-    }
-    return array; // array.sort()
-}
 // retorna ordenado de forma descendiente
 function shortInvertByBubble(array) {
     let arrayCopy = [...array];
@@ -42,11 +28,26 @@ function shortInvertByBubble(array) {
     }
     return arrayCopy; // shortByBubble(array).reverse() == array.sort().reverse()
 }
-function filterRange(array, a, b) {
-    let shortedArr = shortByBubble(array);
-    let aIndex = shortedArr.indexOf(a);
-    let bIndex = shortedArr.indexOf(b);
-    return shortedArr.slice(aIndex, bIndex - 1);
+function setRange(minValue, maxValue) {
+    let range = [];
+    for (let i = minValue; i <= maxValue; i++) {
+        range.push(i);
+    }
+    return range;
+}
+// Comprobando si un valor existe en un rango
+function filterRange(valueList, a, b) {
+    let valueRange; //
+    let filteredValue = [];
+    a = [a, b].sort()[0];
+    b = [a, b].sort()[1];
+    valueRange = setRange(a, b);
+    for (let value of valueList) {
+        if (valueRange.includes(value)) {
+            filteredValue.push(value);
+        }
+    }
+    return filteredValue;
 }
 function randomValue(seed) {
     return Math.floor(Math.random() * seed);
