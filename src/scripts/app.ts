@@ -33,9 +33,7 @@ function shortInvertByBubble (array:number[]) {
     return arrayCopy // shortByBubble(array).reverse() == array.sort().reverse()
 }
 
-
-
-function setRange(minValue : number, maxValue: number) {
+function getRange(minValue : number, maxValue: number) {
     let range: number[] = [];
     for (let i = minValue ; i <= maxValue ; i++) {
         range.push(i);
@@ -52,7 +50,7 @@ function filterRange (valueList:number[], a:number, b:number) {
     a = [a,b].sort()[0]
     b = [a,b].sort()[1]
 
-    valueRange = setRange(a,b)
+    valueRange = getRange(a,b)
 
     for (let value of valueList) {
         if (valueRange.includes(value)) {
@@ -94,6 +92,7 @@ function randomize (vec:number[], seed:number = 0) {
 
 function selectUniqueItems (wordList: string[]) {
     let registro: string[] = [];
+
     for (let word of wordList) {
         if (registro.indexOf(word) === -1) {
             registro.push(word);
